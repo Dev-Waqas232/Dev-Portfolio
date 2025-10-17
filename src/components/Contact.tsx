@@ -1,12 +1,12 @@
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { FiMail, FiGithub, FiLinkedin, FiSend } from 'react-icons/fi';
-import { FaWhatsapp } from 'react-icons/fa';
-import { contactInfo } from '../data/contact';
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import { FiMail, FiGithub, FiLinkedin, FiSend } from "react-icons/fi";
+import { FaWhatsapp } from "react-icons/fa";
+import { contactInfo } from "../data/contact";
 
 const Contact = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -32,31 +32,31 @@ const Contact = () => {
   const contactMethods = [
     {
       icon: FiMail,
-      label: 'Email',
+      label: "Email",
       value: contactInfo.email,
       href: `mailto:${contactInfo.email}`,
-      color: 'from-primary-600 to-primary-700',
+      color: "from-primary-600 to-primary-700",
     },
     {
       icon: FiGithub,
-      label: 'GitHub',
-      value: 'github.com',
+      label: "GitHub",
+      value: "github.com",
       href: contactInfo.github,
-      color: 'from-primary-700 to-primary-800',
+      color: "from-primary-700 to-primary-800",
     },
     {
       icon: FiLinkedin,
-      label: 'LinkedIn',
-      value: 'linkedin.com',
+      label: "LinkedIn",
+      value: "linkedin.com",
       href: contactInfo.linkedin,
-      color: 'from-primary-500 to-primary-600',
+      color: "from-primary-500 to-primary-600",
     },
     {
       icon: FaWhatsapp,
-      label: 'WhatsApp',
-      value: 'Chat on WhatsApp',
+      label: "WhatsApp",
+      value: "Chat on WhatsApp",
       href: contactInfo.whatsapp,
-      color: 'from-accent-500 to-accent-600',
+      color: "from-accent-500 to-accent-600",
     },
   ];
 
@@ -72,7 +72,7 @@ const Contact = () => {
           transition={{
             duration: 20,
             repeat: Infinity,
-            ease: 'linear',
+            ease: "linear",
           }}
           className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-500/10 rounded-full blur-3xl"
         />
@@ -84,17 +84,20 @@ const Contact = () => {
           transition={{
             duration: 25,
             repeat: Infinity,
-            ease: 'linear',
+            ease: "linear",
           }}
           className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent-500/10 rounded-full blur-3xl"
         />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10" ref={ref}>
+      <div
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
+        ref={ref}
+      >
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
+          animate={isInView ? "visible" : "hidden"}
         >
           {/* Section Title */}
           <motion.div variants={itemVariants} className="text-center mb-16">
@@ -103,7 +106,8 @@ const Contact = () => {
             </h2>
             <div className="w-20 h-1 bg-gradient-to-r from-primary-500 to-accent-500 mx-auto rounded-full" />
             <p className="text-text-secondary mt-4 max-w-2xl mx-auto">
-              I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+              I'm always open to discussing new projects, creative ideas, or
+              opportunities to be part of your vision.
             </p>
           </motion.div>
 
@@ -117,12 +121,13 @@ const Contact = () => {
                     Let's work together!
                   </h3>
                   <p className="text-text-secondary mb-8">
-                    Feel free to reach out through any of these platforms. I'll get back to you as soon as possible!
+                    Feel free to reach out through any of these platforms. I'll
+                    get back to you as soon as possible!
                   </p>
 
                   {/* Contact Methods */}
                   <div className="space-y-4">
-                    {contactMethods.map((method, index) => (
+                    {contactMethods.map((method) => (
                       <motion.a
                         key={method.label}
                         href={method.href}
@@ -132,14 +137,21 @@ const Contact = () => {
                         whileHover={{ x: 10, scale: 1.02 }}
                         className="flex items-center gap-4 p-4 bg-bg-tertiary/50 rounded-lg border border-border-secondary hover:border-primary-500/50 transition-all duration-300 group"
                       >
-                        <div className={`p-3 rounded-lg bg-gradient-to-br ${method.color}`}>
-                          <method.icon className="text-text-primary" size={24} />
+                        <div
+                          className={`p-3 rounded-lg bg-gradient-to-br ${method.color}`}
+                        >
+                          <method.icon
+                            className="text-text-primary"
+                            size={24}
+                          />
                         </div>
                         <div>
                           <div className="text-text-primary font-medium group-hover:text-gradient transition-all duration-300">
                             {method.label}
                           </div>
-                          <div className="text-text-secondary text-sm">{method.value}</div>
+                          <div className="text-text-secondary text-sm">
+                            {method.value}
+                          </div>
                         </div>
                       </motion.a>
                     ))}
@@ -163,7 +175,8 @@ const Contact = () => {
                     </h3>
 
                     <p className="text-text-secondary">
-                      Whether you have a question, want to discuss a project, or just want to say hi, my inbox is always open.
+                      Whether you have a question, want to discuss a project, or
+                      just want to say hi, my inbox is always open.
                     </p>
 
                     <motion.a
@@ -189,10 +202,7 @@ const Contact = () => {
           </div>
 
           {/* Quote */}
-          <motion.div
-            variants={itemVariants}
-            className="mt-16 text-center"
-          >
+          <motion.div variants={itemVariants} className="mt-16 text-center">
             <div className="relative inline-block">
               <div className="absolute inset-0 bg-gradient-to-r from-primary-500/10 to-accent-500/10 blur-xl rounded-lg" />
               <blockquote className="relative text-text-secondary italic text-lg px-8 py-4">
@@ -207,7 +217,3 @@ const Contact = () => {
 };
 
 export default Contact;
-
-
-
-

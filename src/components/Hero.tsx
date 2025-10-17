@@ -1,30 +1,93 @@
-import { motion } from 'framer-motion';
-import { FiGithub, FiLinkedin, FiMail, FiArrowDown, FiCode, FiZap, FiCpu, FiDatabase, FiLayers, FiTerminal, FiGlobe, FiBox } from 'react-icons/fi';
-import { FaWhatsapp } from 'react-icons/fa';
-import { contactInfo } from '../data/contact';
+import { motion } from "framer-motion";
+import {
+  FiGithub,
+  FiLinkedin,
+  FiMail,
+  FiCode,
+  FiZap,
+  FiCpu,
+  FiDatabase,
+  FiLayers,
+  FiTerminal,
+  FiGlobe,
+  FiBox,
+} from "react-icons/fi";
+import { FaWhatsapp } from "react-icons/fa";
+import { contactInfo } from "../data/contact";
 
 const Hero = () => {
   const socialLinks = [
-    { icon: FiGithub, href: contactInfo.github, label: 'GitHub' },
-    { icon: FiLinkedin, href: contactInfo.linkedin, label: 'LinkedIn' },
-    { icon: FiMail, href: `mailto:${contactInfo.email}`, label: 'Email' },
-    { icon: FaWhatsapp, href: contactInfo.whatsapp, label: 'WhatsApp' },
+    { icon: FiGithub, href: contactInfo.github, label: "GitHub" },
+    { icon: FiLinkedin, href: contactInfo.linkedin, label: "LinkedIn" },
+    { icon: FiMail, href: `mailto:${contactInfo.email}`, label: "Email" },
+    { icon: FaWhatsapp, href: contactInfo.whatsapp, label: "WhatsApp" },
   ];
 
   // More floating particles scattered across the screen
   const floatingIcons = [
-    { icon: FiCode, delay: 0, duration: 4, position: 'top-1/4 right-1/3', size: 40 },
-    { icon: FiZap, delay: 1, duration: 5, position: 'bottom-1/3 left-1/4', size: 35 },
-    { icon: FiCpu, delay: 0.5, duration: 6, position: 'top-1/3 left-1/5', size: 38 },
-    { icon: FiDatabase, delay: 1.5, duration: 5.5, position: 'top-2/3 right-1/4', size: 32 },
-    { icon: FiLayers, delay: 2, duration: 4.5, position: 'bottom-1/4 right-1/5', size: 36 },
-    { icon: FiTerminal, delay: 0.8, duration: 5.2, position: 'top-1/2 left-1/6', size: 34 },
-    { icon: FiGlobe, delay: 1.2, duration: 4.8, position: 'bottom-1/2 right-1/6', size: 40 },
-    { icon: FiBox, delay: 1.8, duration: 5.8, position: 'top-3/4 left-1/3', size: 30 },
+    {
+      icon: FiCode,
+      delay: 0,
+      duration: 4,
+      position: "top-1/4 right-1/3",
+      size: 40,
+    },
+    {
+      icon: FiZap,
+      delay: 1,
+      duration: 5,
+      position: "bottom-1/3 left-1/4",
+      size: 35,
+    },
+    {
+      icon: FiCpu,
+      delay: 0.5,
+      duration: 6,
+      position: "top-1/3 left-1/5",
+      size: 38,
+    },
+    {
+      icon: FiDatabase,
+      delay: 1.5,
+      duration: 5.5,
+      position: "top-2/3 right-1/4",
+      size: 32,
+    },
+    {
+      icon: FiLayers,
+      delay: 2,
+      duration: 4.5,
+      position: "bottom-1/4 right-1/5",
+      size: 36,
+    },
+    {
+      icon: FiTerminal,
+      delay: 0.8,
+      duration: 5.2,
+      position: "top-1/2 left-1/6",
+      size: 34,
+    },
+    {
+      icon: FiGlobe,
+      delay: 1.2,
+      duration: 4.8,
+      position: "bottom-1/2 right-1/6",
+      size: 40,
+    },
+    {
+      icon: FiBox,
+      delay: 1.8,
+      duration: 5.8,
+      position: "top-3/4 left-1/3",
+      size: 30,
+    },
   ];
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section
+      id="home"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden"
+    >
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Main background blobs */}
@@ -38,7 +101,7 @@ const Hero = () => {
           transition={{
             duration: 20,
             repeat: Infinity,
-            ease: 'easeInOut',
+            ease: "easeInOut",
           }}
           className="absolute top-1/4 -left-20 w-96 h-96 bg-primary-500/10 rounded-full blur-3xl"
         />
@@ -52,7 +115,7 @@ const Hero = () => {
           transition={{
             duration: 25,
             repeat: Infinity,
-            ease: 'easeInOut',
+            ease: "easeInOut",
           }}
           className="absolute bottom-1/4 -right-20 w-96 h-96 bg-accent-500/10 rounded-full blur-3xl"
         />
@@ -67,7 +130,7 @@ const Hero = () => {
           transition={{
             duration: 15,
             repeat: Infinity,
-            ease: 'easeInOut',
+            ease: "easeInOut",
           }}
           className="absolute top-1/3 right-1/4 w-64 h-64 bg-primary-400/5 rounded-full blur-2xl"
         />
@@ -80,7 +143,7 @@ const Hero = () => {
           transition={{
             duration: 18,
             repeat: Infinity,
-            ease: 'easeInOut',
+            ease: "easeInOut",
           }}
           className="absolute bottom-1/3 left-1/3 w-72 h-72 bg-accent-400/5 rounded-full blur-2xl"
         />
@@ -99,7 +162,7 @@ const Hero = () => {
             transition={{
               duration: item.duration,
               repeat: Infinity,
-              ease: 'easeInOut',
+              ease: "easeInOut",
               delay: item.delay,
             }}
             className={`absolute ${item.position} hidden md:block`}
@@ -115,14 +178,14 @@ const Hero = () => {
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: 'easeOut' }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
             className="mb-8"
           >
             <motion.span
               className="text-sm md:text-lg text-primary-400/80 font-light italic tracking-wide"
               style={{ fontFamily: "'Space Grotesk', sans-serif" }}
               animate={{ opacity: [0.7, 1, 0.7] }}
-              transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
             >
               hey, i'm
             </motion.span>
@@ -133,24 +196,26 @@ const Hero = () => {
             className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold mb-6 relative tracking-tight"
             style={{ fontFamily: "'Sora', sans-serif" }}
           >
-            {'Waqas Munir'.split('').map((letter, index) => (
+            {"Waqas Munir".split("").map((letter, index) => (
               <motion.span
                 key={index}
                 initial={{ y: -100, opacity: 0, rotateX: -90 }}
                 animate={{ y: 0, opacity: 1, rotateX: 0 }}
                 transition={{
-                  type: 'spring',
+                  type: "spring",
                   stiffness: 150,
                   damping: 12,
                   delay: 0.2 + index * 0.05,
                 }}
-                className={`text-gradient inline-block ${letter === ' ' ? 'w-3 md:w-4' : ''}`}
+                className={`text-gradient inline-block ${
+                  letter === " " ? "w-3 md:w-4" : ""
+                }`}
                 style={{
-                  backgroundSize: '200% auto',
-                  textShadow: '0 0 40px rgba(20, 184, 166, 0.3)',
+                  backgroundSize: "200% auto",
+                  textShadow: "0 0 40px rgba(20, 184, 166, 0.3)",
                 }}
               >
-                {letter === ' ' ? '\u00A0' : letter}
+                {letter === " " ? "\u00A0" : letter}
               </motion.span>
             ))}
           </motion.h1>
@@ -163,7 +228,7 @@ const Hero = () => {
             className="text-xl md:text-3xl lg:text-4xl font-light text-text-primary mb-3 tracking-widest uppercase"
             style={{
               fontFamily: "'Space Grotesk', sans-serif",
-              letterSpacing: '0.3em'
+              letterSpacing: "0.3em",
             }}
           >
             Software Engineer
@@ -172,7 +237,7 @@ const Hero = () => {
           {/* Divider line */}
           <motion.div
             initial={{ width: 0, opacity: 0 }}
-            animate={{ width: '200px', opacity: 1 }}
+            animate={{ width: "200px", opacity: 1 }}
             transition={{ duration: 0.8, delay: 1 }}
             className="h-0.5 bg-gradient-to-r from-transparent via-primary-500 to-transparent mx-auto mb-12"
           />
@@ -236,8 +301,8 @@ const Hero = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{
                   delay: 1.3 + index * 0.1,
-                  type: 'spring',
-                  stiffness: 200
+                  type: "spring",
+                  stiffness: 200,
                 }}
                 whileHover={{
                   scale: 1.2,
@@ -267,7 +332,3 @@ const Hero = () => {
 };
 
 export default Hero;
-
-
-
-
