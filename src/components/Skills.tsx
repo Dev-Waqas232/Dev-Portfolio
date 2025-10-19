@@ -1,11 +1,11 @@
-import { motion, useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
-import { FiCode, FiLayers, FiServer, FiDatabase, FiTool } from 'react-icons/fi';
-import { skillsData } from '../data/skills';
+import { motion, useInView } from "framer-motion";
+import { useRef, useState } from "react";
+import { FiCode, FiLayers, FiServer, FiDatabase, FiTool } from "react-icons/fi";
+import { skillsData } from "../data/skills";
 
 const Skills = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
 
   const containerVariants = {
@@ -25,7 +25,7 @@ const Skills = () => {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: 'easeOut',
+        ease: "easeOut",
       },
     },
   };
@@ -38,7 +38,7 @@ const Skills = () => {
       rotate: 0,
       transition: {
         duration: 0.4,
-        type: 'spring',
+        type: "spring",
         stiffness: 200,
       },
     },
@@ -47,38 +47,38 @@ const Skills = () => {
   // Category configuration with icons and gradients
   const categories = [
     {
-      key: 'languages',
-      title: 'Languages',
+      key: "languages",
+      title: "Languages",
       icon: FiCode,
-      gradient: 'from-primary-500 to-accent-500',
+      gradient: "from-primary-500 to-accent-500",
       skills: skillsData.languages,
     },
     {
-      key: 'frontend',
-      title: 'Frontend',
+      key: "frontend",
+      title: "Frontend",
       icon: FiLayers,
-      gradient: 'from-accent-500 to-primary-400',
+      gradient: "from-accent-500 to-primary-400",
       skills: skillsData.frontend,
     },
     {
-      key: 'backend',
-      title: 'Backend',
+      key: "backend",
+      title: "Backend",
       icon: FiServer,
-      gradient: 'from-primary-400 to-accent-400',
+      gradient: "from-primary-400 to-accent-400",
       skills: skillsData.backend,
     },
     {
-      key: 'database',
-      title: 'Database',
+      key: "database",
+      title: "Database",
       icon: FiDatabase,
-      gradient: 'from-accent-400 to-primary-500',
+      gradient: "from-accent-400 to-primary-500",
       skills: skillsData.database,
     },
     {
-      key: 'tools',
-      title: 'Tools & More',
+      key: "tools",
+      title: "Tools & More",
       icon: FiTool,
-      gradient: 'from-primary-500 to-accent-500',
+      gradient: "from-primary-500 to-accent-500",
       skills: skillsData.tools,
     },
   ];
@@ -96,7 +96,7 @@ const Skills = () => {
           transition={{
             duration: 20,
             repeat: Infinity,
-            ease: 'easeInOut',
+            ease: "easeInOut",
           }}
           className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-500/10 rounded-full blur-3xl"
         />
@@ -109,21 +109,27 @@ const Skills = () => {
           transition={{
             duration: 25,
             repeat: Infinity,
-            ease: 'easeInOut',
+            ease: "easeInOut",
           }}
           className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent-500/10 rounded-full blur-3xl"
         />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10" ref={ref}>
+      <div
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
+        ref={ref}
+      >
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
+          animate={isInView ? "visible" : "hidden"}
         >
           {/* Section Title */}
           <motion.div variants={categoryVariants} className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+            <h2
+              className="text-4xl md:text-5xl font-bold mb-4"
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+            >
               Tech <span className="text-gradient">Stack</span>
             </h2>
             <div className="w-20 h-1 bg-gradient-to-r from-primary-500 to-accent-500 mx-auto rounded-full" />
@@ -134,7 +140,7 @@ const Skills = () => {
 
           {/* Skills Categories */}
           <div className="space-y-12">
-            {categories.map((category, categoryIndex) => (
+            {categories.map((category) => (
               <motion.div
                 key={category.key}
                 variants={categoryVariants}
@@ -149,13 +155,16 @@ const Skills = () => {
                     transition={{
                       duration: 20,
                       repeat: Infinity,
-                      ease: 'linear',
+                      ease: "linear",
                     }}
                     className={`p-3 bg-gradient-to-br ${category.gradient} rounded-lg shadow-lg`}
                   >
                     <category.icon className="text-bg-primary" size={24} />
                   </motion.div>
-                  <h3 className="text-2xl font-bold text-gradient" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                  <h3
+                    className="text-2xl font-bold text-gradient"
+                    style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                  >
                     {category.title}
                   </h3>
                   <div className="flex-1 h-px bg-gradient-to-r from-border-primary to-transparent" />
@@ -182,7 +191,8 @@ const Skills = () => {
                       <motion.div
                         className={`absolute -inset-1 bg-gradient-to-r ${category.gradient} rounded-lg blur opacity-30`}
                         animate={{
-                          opacity: hoveredSkill === skill ? [0.3, 0.6, 0.3] : 0.3,
+                          opacity:
+                            hoveredSkill === skill ? [0.3, 0.6, 0.3] : 0.3,
                         }}
                         transition={{
                           duration: 1.5,
@@ -206,14 +216,26 @@ const Skills = () => {
                         <>
                           <motion.div
                             initial={{ opacity: 0, scale: 0, y: 0 }}
-                            animate={{ opacity: [0, 1, 0], scale: [0, 1, 0], y: -20 }}
+                            animate={{
+                              opacity: [0, 1, 0],
+                              scale: [0, 1, 0],
+                              y: -20,
+                            }}
                             transition={{ duration: 1, repeat: Infinity }}
                             className={`absolute top-0 left-1/4 w-1 h-1 bg-gradient-to-r ${category.gradient} rounded-full`}
                           />
                           <motion.div
                             initial={{ opacity: 0, scale: 0, y: 0 }}
-                            animate={{ opacity: [0, 1, 0], scale: [0, 1, 0], y: -20 }}
-                            transition={{ duration: 1, repeat: Infinity, delay: 0.3 }}
+                            animate={{
+                              opacity: [0, 1, 0],
+                              scale: [0, 1, 0],
+                              y: -20,
+                            }}
+                            transition={{
+                              duration: 1,
+                              repeat: Infinity,
+                              delay: 0.3,
+                            }}
                             className={`absolute top-0 right-1/4 w-1 h-1 bg-gradient-to-r ${category.gradient} rounded-full`}
                           />
                         </>
@@ -226,14 +248,8 @@ const Skills = () => {
           </div>
 
           {/* Main Stack Highlight */}
-          <motion.div
-            variants={categoryVariants}
-            className="mt-16"
-          >
-            <motion.div
-              className="relative group"
-              whileHover={{ scale: 1.02 }}
-            >
+          <motion.div variants={categoryVariants} className="mt-16">
+            <motion.div className="relative group" whileHover={{ scale: 1.02 }}>
               <motion.div
                 className="absolute -inset-4 bg-gradient-to-r from-primary-500/20 to-accent-500/20 rounded-lg blur-xl"
                 animate={{
@@ -242,7 +258,7 @@ const Skills = () => {
                 transition={{
                   duration: 3,
                   repeat: Infinity,
-                  ease: 'easeInOut',
+                  ease: "easeInOut",
                 }}
               />
               <div className="relative bg-bg-secondary/80 backdrop-blur-sm border border-border-primary rounded-lg p-8 hover:border-primary-500/50 transition-all duration-300">
@@ -250,12 +266,20 @@ const Skills = () => {
                   ⚡ Current Main Stack
                 </p>
                 <div className="flex flex-wrap gap-4 justify-center">
-                  {['TypeScript', 'React', 'Next.js', 'Node.js', 'Nest.js', 'MongoDB', 'Tailwind CSS'].map((tech, i) => (
+                  {[
+                    "TypeScript",
+                    "React",
+                    "Next.js",
+                    "Node.js",
+                    "Nest.js",
+                    "MongoDB",
+                    "Tailwind CSS",
+                  ].map((tech, i) => (
                     <motion.div
                       key={tech}
                       initial={{ opacity: 0, scale: 0 }}
                       animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                      transition={{ delay: 0.8 + i * 0.1, type: 'spring' }}
+                      transition={{ delay: 0.8 + i * 0.1, type: "spring" }}
                       whileHover={{
                         scale: 1.15,
                         y: -5,
@@ -277,7 +301,3 @@ const Skills = () => {
 };
 
 export default Skills;
-
-
-
-

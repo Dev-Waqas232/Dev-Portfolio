@@ -1,6 +1,13 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { FiMail, FiGithub, FiLinkedin, FiSend, FiUser, FiMessageSquare } from "react-icons/fi";
+import {
+  FiMail,
+  FiGithub,
+  FiLinkedin,
+  FiSend,
+  FiUser,
+  FiMessageSquare,
+} from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
 import { contactInfo } from "../data/contact";
 
@@ -17,7 +24,9 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Handle form input changes
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -30,7 +39,11 @@ const Contact = () => {
     setIsSubmitting(true);
 
     // Create mailto link with form data
-    const mailtoLink = `mailto:${contactInfo.email}?subject=Portfolio Contact from ${encodeURIComponent(formData.name)}&body=${encodeURIComponent(
+    const mailtoLink = `mailto:${
+      contactInfo.email
+    }?subject=Portfolio Contact from ${encodeURIComponent(
+      formData.name
+    )}&body=${encodeURIComponent(
       `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
     )}`;
 
@@ -63,37 +76,6 @@ const Contact = () => {
       },
     },
   };
-
-  const contactMethods = [
-    {
-      icon: FiMail,
-      label: "Email",
-      value: contactInfo.email,
-      href: `mailto:${contactInfo.email}`,
-      color: "from-primary-600 to-primary-700",
-    },
-    {
-      icon: FiGithub,
-      label: "GitHub",
-      value: "github.com",
-      href: contactInfo.github,
-      color: "from-primary-700 to-primary-800",
-    },
-    {
-      icon: FiLinkedin,
-      label: "LinkedIn",
-      value: "linkedin.com",
-      href: contactInfo.linkedin,
-      color: "from-primary-500 to-primary-600",
-    },
-    {
-      icon: FaWhatsapp,
-      label: "WhatsApp",
-      value: "Chat on WhatsApp",
-      href: contactInfo.whatsapp,
-      color: "from-accent-500 to-accent-600",
-    },
-  ];
 
   return (
     <section id="contact" className="py-20 relative overflow-hidden">
@@ -136,7 +118,10 @@ const Contact = () => {
         >
           {/* Section Title */}
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+            <h2
+              className="text-4xl md:text-5xl font-bold mb-4"
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+            >
               Let's <span className="text-gradient">Connect</span>
             </h2>
             <div className="w-20 h-1 bg-gradient-to-r from-primary-500 to-accent-500 mx-auto rounded-full" />
@@ -164,18 +149,27 @@ const Contact = () => {
                   }}
                 />
                 <div className="relative bg-bg-secondary/90 backdrop-blur-sm border border-border-primary rounded-xl p-8 hover:border-primary-500/50 transition-all duration-300">
-                  <h3 className="text-2xl font-bold mb-6" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                  <h3
+                    className="text-2xl font-bold mb-6"
+                    style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                  >
                     <span className="text-gradient">Send a Message</span>
                   </h3>
 
                   <form onSubmit={handleSubmit} className="space-y-5">
                     {/* Name Input */}
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-text-primary mb-2">
+                      <label
+                        htmlFor="name"
+                        className="block text-sm font-medium text-text-primary mb-2"
+                      >
                         Your Name
                       </label>
                       <div className="relative">
-                        <FiUser className="absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary" size={18} />
+                        <FiUser
+                          className="absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary"
+                          size={18}
+                        />
                         <motion.input
                           whileFocus={{ scale: 1.01 }}
                           type="text"
@@ -192,11 +186,17 @@ const Contact = () => {
 
                     {/* Email Input */}
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-text-primary mb-2">
+                      <label
+                        htmlFor="email"
+                        className="block text-sm font-medium text-text-primary mb-2"
+                      >
                         Your Email
                       </label>
                       <div className="relative">
-                        <FiMail className="absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary" size={18} />
+                        <FiMail
+                          className="absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary"
+                          size={18}
+                        />
                         <motion.input
                           whileFocus={{ scale: 1.01 }}
                           type="email"
@@ -213,11 +213,17 @@ const Contact = () => {
 
                     {/* Message Textarea */}
                     <div>
-                      <label htmlFor="message" className="block text-sm font-medium text-text-primary mb-2">
+                      <label
+                        htmlFor="message"
+                        className="block text-sm font-medium text-text-primary mb-2"
+                      >
                         Your Message
                       </label>
                       <div className="relative">
-                        <FiMessageSquare className="absolute left-4 top-4 text-text-secondary" size={18} />
+                        <FiMessageSquare
+                          className="absolute left-4 top-4 text-text-secondary"
+                          size={18}
+                        />
                         <motion.textarea
                           whileFocus={{ scale: 1.01 }}
                           id="message"
@@ -239,11 +245,11 @@ const Contact = () => {
                       whileHover={{ scale: 1.02, y: -2 }}
                       whileTap={{ scale: 0.98 }}
                       className={`w-full flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-primary-500 to-accent-500 text-bg-primary font-bold rounded-lg shadow-lg hover:shadow-primary-500/50 transition-all duration-300 ${
-                        isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
+                        isSubmitting ? "opacity-50 cursor-not-allowed" : ""
                       }`}
                     >
                       <FiSend size={20} />
-                      {isSubmitting ? 'Opening Email...' : 'Send Message'}
+                      {isSubmitting ? "Opening Email..." : "Send Message"}
                     </motion.button>
                   </form>
                 </div>
@@ -296,7 +302,10 @@ const Contact = () => {
                       <FaWhatsapp className="text-white" size={40} />
                     </motion.div>
                     <div className="flex-1">
-                      <h3 className="text-2xl font-bold text-white mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                      <h3
+                        className="text-2xl font-bold text-white mb-2"
+                        style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                      >
                         Chat on WhatsApp
                       </h3>
                       <p className="text-white/90 text-sm">
@@ -400,7 +409,10 @@ const Contact = () => {
                 className="bg-primary-500/10 border border-primary-500/30 rounded-lg p-4 text-center"
               >
                 <p className="text-text-secondary text-sm">
-                  ⚡ <span className="text-primary-400 font-semibold">Usually reply within 24 hours</span>
+                  ⚡{" "}
+                  <span className="text-primary-400 font-semibold">
+                    Usually reply within 24 hours
+                  </span>
                 </p>
               </motion.div>
             </motion.div>
