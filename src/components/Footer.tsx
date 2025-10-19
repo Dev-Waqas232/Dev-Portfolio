@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FiGithub, FiLinkedin, FiMail, FiHeart } from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
 import { FaWhatsapp } from 'react-icons/fa';
 import { contactInfo } from '../data/contact';
 
@@ -123,13 +123,11 @@ const Footer = () => {
           viewport={{ once: true }}
           className="pt-8 border-t border-border-primary"
         >
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-text-tertiary text-sm text-center md:text-left">
+          <div className="flex items-center gap-4 w-full justify-center">
+            <p className="text-text-tertiary text-sm">
               © {currentYear} Waqas Munir. All rights reserved.
             </p>
-            <p className="text-text-tertiary text-sm flex items-center gap-2">
-              Made with <FiHeart className="text-accent-500 animate-pulse" size={16} /> using React, TypeScript & Tailwind
-            </p>
+
           </div>
         </motion.div>
       </div>
