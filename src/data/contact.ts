@@ -8,10 +8,10 @@ import { ContactInfo } from '../types';
  */
 
 export const contactInfo: ContactInfo = {
-  email: 'your.email@example.com', // Update with your email
-  github: 'https://github.com/yourusername', // Update with your GitHub profile
-  linkedin: 'https://linkedin.com/in/yourusername', // Update with your LinkedIn profile
-  whatsapp: 'https://wa.me/1234567890', // Update with your WhatsApp number (format: https://wa.me/[country code][phone number])
+  email: 'devwaqas232@gmail.com',
+  github: 'https://github.com/Dev-Waqas232',
+  linkedin: 'https://www.linkedin.com/in/waqas-munir-343601244/',
+  whatsapp: 'https://wa.me/923085858421', // Pakistan (+92)
 };
 
 
