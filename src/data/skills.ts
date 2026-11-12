@@ -1,42 +1,24 @@
-// Simple array-based structure - super easy to add/remove skills!
-export const skillsData = {
-  languages: [
-    'TypeScript',
-    'JavaScript',
-    "Python",
-    'C++',
-  ],
-  frontend: [
-    'React',
-    'Next.js',
-    'Tailwind CSS',
-    'Redux Toolkit',
-    'Framer Motion',
-    'React Query',
-  ],
-  backend: [
-    'Node.js',
-    'Nest.js',
-    'Express.js',
-    'RESTful APIs',
-    'WebSockets',
-  ],
-  database: [
-    'MongoDB',
-    'PostgreSQL',
-    "TypeORM",
-    'Prisma ORM',
-    'Mongoose',
-  ],
-  tools: [
-    'Git & GitHub',
-    'VS Code',
-    'Postman',
-    'npm/yarn',
-    'Webpack/Vite',
-  ],
-};
-
-
-
-
+/**
+ * Tech stack, grouped. Keep it to tools you've used in real work (it's what recruiters and ATS scan).
+ */
+export const skillGroups: { title: string; skills: string[] }[] = [
+  { title: 'Languages', skills: ['TypeScript', 'JavaScript', 'Python'] },
+  {
+    title: 'Frontend',
+    skills: ['React', 'Next.js', 'Tailwind CSS', 'React Query', 'Redux Toolkit', 'Zustand', 'Framer Motion'],
+  },
+  {
+    title: 'Backend',
+    skills: ['Node.js', 'NestJS', 'Express.js', 'FastAPI', 'tRPC', 'REST APIs', 'WebSockets', 'BullMQ', 'Redis', 'Puppeteer'],
+  },
+  {
+    title: 'Databases & ORMs',
+    skills: ['PostgreSQL', 'MySQL', 'MongoDB', 'Prisma', 'Drizzle ORM', 'TypeORM', 'Mongoose'],
+  },
+  { title: 'AI & LLMs', skills: ['RAG', 'LangChain', 'LangGraph', 'OpenAI', 'AI Agents'] },
+  {
+    title: 'DevOps & Infra',
+    skills: ['Linux VPS', 'Nginx', 'CyberPanel', 'LiteSpeed', 'OpenLiteSpeed', 'CI/CD', 'Git & GitHub'],
+  },
+  { title: 'Mobile & Commerce', skills: ['React Native', 'Expo', 'Flutter', 'Shopify'] },
+];

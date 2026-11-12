@@ -1,13 +1,17 @@
-export interface Project {
+export interface CaseStudy {
   id: string;
   title: string;
-  description: string;
-  longDescription?: string;
-  technologies: string[];
-  imageUrl?: string;
-  demoUrl?: string;
-  githubUrl?: string;
-  featured?: boolean;
+  category: string;
+  company: string;
+  client?: string;
+  role: string;
+  status?: string; // e.g. 'Private', 'Mobile app in progress'
+  url?: string;
+  imageUrl?: string; // optional screenshot in /public/projects
+  summary: string;
+  metrics: string[]; // 2-3 short, factual highlights shown on the card
+  built: string[];
+  tech: string[];
 }
 
 export interface Skill {
@@ -37,3 +41,19 @@ export interface ContactInfo {
 
 
 
+
+export interface ProjectHighlight {
+  project: string;
+  url?: string;
+  text: string;
+}
+
+export interface Experience {
+  role: string;
+  company: string;
+  product?: { name: string; url: string };
+  start: string; // e.g. 'Dec 2025'
+  end?: string; // omit for current role
+  highlights: Array<string | ProjectHighlight>;
+  tech: string[];
+}

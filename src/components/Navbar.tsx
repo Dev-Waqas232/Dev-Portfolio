@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FiHome, FiUser, FiCode, FiBriefcase, FiMail } from 'react-icons/fi';
+import { FiHome, FiUser, FiCode, FiBriefcase, FiFolder, FiMail } from 'react-icons/fi';
 
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState('home');
@@ -9,15 +9,16 @@ const Navbar = () => {
   const navItems = [
     { name: 'Home', href: '#home', icon: FiHome },
     { name: 'About', href: '#about', icon: FiUser },
+    { name: 'Experience', href: '#experience', icon: FiBriefcase },
+    { name: 'Projects', href: '#projects', icon: FiFolder },
     { name: 'Skills', href: '#skills', icon: FiCode },
-    { name: 'Projects', href: '#projects', icon: FiBriefcase },
     { name: 'Contact', href: '#contact', icon: FiMail },
   ];
 
   // Track active section on scroll
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'skills', 'projects', 'contact'];
+      const sections = ['home', 'about', 'experience', 'projects', 'skills', 'contact'];
       const scrollPosition = window.scrollY + window.innerHeight / 3;
 
       // Find the section that's currently in view
@@ -51,14 +52,14 @@ const Navbar = () => {
   };
 
   return (
-    <div className="fixed left-4 top-1/2 -translate-y-1/2 z-50">
+    <div className="fixed z-50 bottom-4 left-1/2 -translate-x-1/2 md:bottom-auto md:left-4 md:top-1/2 md:translate-x-0 md:-translate-y-1/2">
       <motion.nav
         initial={{ x: -100, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
       {/* Vertical Navigation Bar */}
-      <div className="flex flex-col gap-4 bg-bg-secondary/80 backdrop-blur-md rounded-xl p-3 border border-border-primary shadow-2xl">
+      <div className="flex flex-row md:flex-col gap-2 md:gap-4 bg-bg-secondary/80 backdrop-blur-md rounded-xl p-2 md:p-3 border border-border-primary shadow-2xl">
         {navItems.map((item, index) => {
           const isActive = activeSection === item.href.slice(1);
 
@@ -102,7 +103,7 @@ const Navbar = () => {
               {isActive && (
                 <motion.div
                   layoutId="activeIndicator"
-                  className="absolute -left-5 top-1/2 -translate-y-1/2 w-1 h-6 bg-gradient-to-b from-primary-500 to-accent-500 rounded-r-full"
+                  className="hidden md:block absolute -left-5 top-1/2 -translate-y-1/2 w-1 h-6 bg-gradient-to-b from-primary-500 to-accent-500 rounded-r-full"
                   transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                 />
               )}
@@ -111,7 +112,7 @@ const Navbar = () => {
               <motion.div
                 initial={{ opacity: 0, x: -10 }}
                 whileHover={{ opacity: 1, x: 0 }}
-                className="absolute left-full ml-4 top-1/2 -translate-y-1/2 whitespace-nowrap pointer-events-none"
+                className="hidden md:block absolute left-full ml-4 top-1/2 -translate-y-1/2 whitespace-nowrap pointer-events-none"
               >
                 <span className="text-sm font-medium text-text-primary bg-bg-secondary/95 backdrop-blur-sm px-3 py-2 rounded-lg border border-primary-500/30 shadow-lg">
                   {item.name}

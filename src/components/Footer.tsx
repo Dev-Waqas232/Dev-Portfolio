@@ -16,8 +16,9 @@ const Footer = () => {
   const quickLinks = [
     { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
+    { name: 'Experience', href: '#experience' },
     { name: 'Projects', href: '#projects' },
+    { name: 'Skills', href: '#skills' },
     { name: 'Contact', href: '#contact' },
   ];
 
@@ -38,7 +39,7 @@ const Footer = () => {
             >
               <h3 className="text-2xl font-bold text-gradient mb-2">Waqas Munir</h3>
               <p className="text-text-secondary text-sm">
-                Full Stack Developer & Software Engineer
+                Associate Software Engineer
               </p>
             </motion.div>
             <motion.p
@@ -48,7 +49,7 @@ const Footer = () => {
               transition={{ delay: 0.1 }}
               className="text-text-tertiary text-sm"
             >
-              Building exceptional digital experiences with modern web technologies.
+              Full-stack engineer building AI-powered products and the infrastructure behind them.
             </motion.p>
           </div>
 

@@ -125,8 +125,9 @@ const Contact = () => {
               Let's <span className="text-gradient">Connect</span>
             </h2>
             <div className="w-20 h-1 bg-gradient-to-r from-primary-500 to-accent-500 mx-auto rounded-full" />
-            <p className="text-text-secondary mt-4 max-w-2xl mx-auto italic">
-              Got a project in mind? Let's build something amazing together! 💬
+            <p className="text-text-secondary mt-4 max-w-2xl mx-auto">
+              Open to full-time roles and freelance projects. Whether you&apos;re hiring or have something
+              to build, I&apos;d love to hear from you.
             </p>
           </motion.div>
 
@@ -233,7 +234,7 @@ const Contact = () => {
                           required
                           rows={5}
                           className="w-full pl-12 pr-4 py-3 bg-bg-tertiary/50 border border-border-primary rounded-lg text-text-primary placeholder-text-tertiary focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all duration-300 resize-none"
-                          placeholder="Tell me about your project..."
+                          placeholder="Tell me about the role or project..."
                         />
                       </div>
                     </div>
@@ -309,7 +310,7 @@ const Contact = () => {
                         Chat on WhatsApp
                       </h3>
                       <p className="text-white/90 text-sm">
-                        Quick response • Available now
+                        Quickest way to reach me
                       </p>
                     </div>
                     <motion.div
@@ -396,7 +397,7 @@ const Contact = () => {
                         GitHub
                       </div>
                       <div className="text-text-secondary text-sm">
-                        Check out my code
+                        github.com/Dev-Waqas232
                       </div>
                     </div>
                   </motion.a>
@@ -409,7 +410,6 @@ const Contact = () => {
                 className="bg-primary-500/10 border border-primary-500/30 rounded-lg p-4 text-center"
               >
                 <p className="text-text-secondary text-sm">
-                  ⚡{" "}
                   <span className="text-primary-400 font-semibold">
                     Usually reply within 24 hours
                   </span>

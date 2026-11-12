@@ -1,82 +1,74 @@
 import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 
+/**
+ * Custom cursor for mouse users only.
+ * - Disabled on touch devices (no stuck cursor at the top-left corner).
+ * - Hidden until the first mouse move.
+ * - Uses motion values, so mouse moves don't re-render React.
+ */
 const CustomCursor = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [enabled] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia('(pointer: fine)').matches,
+  );
+  const [visible, setVisible] = useState(false);
   const [isPointer, setIsPointer] = useState(false);
 
+  const x = useMotionValue(-100);
+  const y = useMotionValue(-100);
+  const ringX = useSpring(x, { stiffness: 300, damping: 28, mass: 0.3 });
+  const ringY = useSpring(y, { stiffness: 300, damping: 28, mass: 0.3 });
+
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+    if (!enabled) return;
+    const root = document.documentElement;
+    root.classList.add('custom-cursor');
 
-      // Check if hovering over clickable element
-      const target = e.target as HTMLElement;
-      const isClickable = target.closest('a, button, input, textarea, [role="button"]');
-      setIsPointer(!!isClickable);
+    const onMove = (e: MouseEvent) => {
+      x.set(e.clientX);
+      y.set(e.clientY);
+      setVisible(true);
+      const clickable = (e.target as HTMLElement).closest('a, button, input, textarea, [role="button"]');
+      setIsPointer((prev) => (prev === !!clickable ? prev : !!clickable));
     };
+    const onLeave = () => setVisible(false);
 
-    window.addEventListener('mousemove', handleMouseMove);
-
+    window.addEventListener('mousemove', onMove);
+    document.addEventListener('mouseleave', onLeave);
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
+      root.classList.remove('custom-cursor');
+      window.removeEventListener('mousemove', onMove);
+      document.removeEventListener('mouseleave', onLeave);
     };
-  }, []);
+  }, [enabled, x, y]);
+
+  if (!enabled) return null;
 
   return (
-    <>
-      {/* Outer ring - follows with delay */}
+    <div aria-hidden="true" style={{ opacity: visible ? 1 : 0 }} className="transition-opacity duration-200">
+      {/* Outer ring */}
       <motion.div
         className="fixed top-0 left-0 pointer-events-none z-[9999] mix-blend-difference"
-        animate={{
-          x: mousePosition.x - 20,
-          y: mousePosition.y - 20,
-          scale: isPointer ? 1.5 : 1,
-        }}
-        transition={{
-          type: 'spring',
-          stiffness: 150,
-          damping: 15,
-          mass: 0.1,
-        }}
+        style={{ x: ringX, y: ringY, translateX: '-50%', translateY: '-50%' }}
       >
-        <div className="w-10 h-10 border-2 border-primary-400 rounded-full" />
+        <motion.div
+          animate={{ scale: isPointer ? 1.5 : 1 }}
+          className="w-10 h-10 border-2 border-primary-400 rounded-full"
+        />
       </motion.div>
 
-      {/* Inner dot - follows instantly */}
+      {/* Inner dot */}
       <motion.div
         className="fixed top-0 left-0 pointer-events-none z-[9999]"
-        animate={{
-          x: mousePosition.x - 4,
-          y: mousePosition.y - 4,
-          scale: isPointer ? 0.5 : 1,
-        }}
-        transition={{
-          type: 'spring',
-          stiffness: 500,
-          damping: 28,
-        }}
+        style={{ x, y, translateX: '-50%', translateY: '-50%' }}
       >
-        <div className="w-2 h-2 bg-accent-500 rounded-full shadow-[0_0_10px_rgba(132,204,22,0.8)]" />
+        <motion.div
+          animate={{ scale: isPointer ? 0.5 : 1 }}
+          className="w-2 h-2 bg-accent-500 rounded-full shadow-[0_0_10px_rgb(var(--color-accent-500)/0.8)]"
+        />
       </motion.div>
-
-      {/* Glow effect on click */}
-      <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-[9998]"
-        animate={{
-          x: mousePosition.x - 15,
-          y: mousePosition.y - 15,
-        }}
-        transition={{
-          type: 'spring',
-          stiffness: 300,
-          damping: 20,
-        }}
-      >
-        <div className="w-8 h-8 bg-primary-500/20 rounded-full blur-xl" />
-      </motion.div>
-    </>
+    </div>
   );
 };
 
 export default CustomCursor;
-

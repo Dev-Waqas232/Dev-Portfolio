@@ -1,297 +1,134 @@
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
-import { FiCode, FiZap, FiHeart, FiTrendingUp } from 'react-icons/fi';
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
+import { FiLayers, FiCpu, FiServer, FiZap } from 'react-icons/fi';
+
+const quickFacts = [
+  { label: 'Current role', value: 'Associate Software Engineer, OptimaGeeks' },
+  { label: 'Experience', value: '2+ years' },
+  { label: 'Focus', value: 'Full-stack & AI systems' },
+  { label: 'Based in', value: 'Lahore, Pakistan' },
+  { label: 'Education', value: 'BSCS, University of Agriculture (CGPA 3.69)' },
+];
+
+const focusAreas = [
+  {
+    icon: FiLayers,
+    title: 'Full-Stack Engineering',
+    text: 'Scalable web apps and type-safe APIs, from clinical platforms to SaaS products.',
+    tags: ['React', 'Next.js', 'NestJS', 'PostgreSQL'],
+  },
+  {
+    icon: FiCpu,
+    title: 'AI Systems & RAG',
+    text: 'LLM-powered automation: request classification, context-aware responses and retrieval-augmented generation.',
+    tags: ['LangChain', 'LangGraph', 'FastAPI', 'RAG'],
+  },
+  {
+    icon: FiServer,
+    title: 'DevOps & Delivery',
+    text: 'I ship what I build: CI/CD pipelines, Linux VPS administration and Nginx deployments.',
+    tags: ['CI/CD', 'Linux', 'Nginx'],
+  },
+  {
+    icon: FiZap,
+    title: 'AI-Native Engineering',
+    text: 'Building with AI coding agents like Claude Code to go from idea to production faster.',
+    tags: ['Claude Code', 'AI Agents'],
+  },
+];
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
 
 const About = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
-  const [hoveredStat, setHoveredStat] = useState<number | null>(null);
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-      },
-    },
-  };
-
-  const stats = [
-    { label: 'Months Experience', value: '6+', icon: FiTrendingUp, color: 'from-primary-500 to-accent-500' },
-    { label: 'Projects Built', value: '7+', icon: FiCode, color: 'from-accent-500 to-primary-400' },
-    { label: 'Tech Stack Items', value: '15+', icon: FiZap, color: 'from-primary-400 to-accent-400' },
-    { label: 'Passion Level', value: '100%', icon: FiHeart, color: 'from-accent-400 to-primary-500' },
-  ];
 
   return (
     <section id="about" className="py-20 relative overflow-hidden">
-      {/* Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary-500/5 to-transparent" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10" ref={ref}>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8" ref={ref}>
         <motion.div
-          variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
+          variants={{ visible: { transition: { staggerChildren: 0.12 } } }}
         >
           {/* Section Title */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
+          <motion.div variants={fadeUp} className="text-center mb-14">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               About <span className="text-gradient">Me</span>
             </h2>
             <div className="w-20 h-1 bg-gradient-to-r from-primary-500 to-accent-500 mx-auto rounded-full" />
           </motion.div>
 
-          {/* Description - Full Width */}
-          <motion.div variants={itemVariants} className="mb-12">
-            <motion.div
-              className="relative group"
-              whileHover={{ scale: 1.01 }}
-              transition={{ type: 'spring', stiffness: 300 }}
-            >
-              <motion.div
-                className="absolute -inset-4 bg-gradient-to-r from-primary-500/20 to-accent-500/20 blur-2xl rounded-lg"
-                animate={{
-                  opacity: [0.5, 0.8, 0.5],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-              />
-              <div className="relative bg-bg-secondary/50 backdrop-blur-sm border border-border-primary rounded-lg p-8 group-hover:border-primary-500/50 transition-all duration-300">
-                <motion.h3
-                  className="text-2xl font-bold mb-6 text-center"
-                  style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-                >
-                  <span className="text-gradient">Junior Full Stack Developer</span>
-                </motion.h3>
-                <div className="grid md:grid-cols-3 gap-6 text-text-secondary leading-relaxed">
-                  <motion.p
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={isInView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ delay: 0.3 }}
-                  >
-                    Hey! I'm <span className="text-primary-400 font-semibold">Waqas Munir</span>,
-                    a junior full-stack developer with <span className="text-accent-400 font-semibold">6+ months</span> of
-                    hands-on experience building modern web applications. I live and breathe the{' '}
-                    <span className="text-primary-400 font-semibold">TypeScript ecosystem</span>!
-                  </motion.p>
-                  <motion.p
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={isInView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ delay: 0.5 }}
-                  >
-                    My playground? <span className="text-accent-400 font-semibold">MERN stack</span> (MongoDB, Express, React, Node.js),
-                    supercharged with <span className="text-primary-400 font-semibold">Next.js</span> for the frontend
-                    and <span className="text-accent-400 font-semibold">Nest.js</span> for robust backend architectures.
-                    I turn coffee into clean, scalable code ☕➡️💻
-                  </motion.p>
-                  <motion.p
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={isInView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ delay: 0.7 }}
-                  >
-                    What drives me? <span className="text-primary-400 font-semibold">Pure passion</span> for software engineering
-                    and an insatiable curiosity for exploring new technologies, languages, and frameworks.
-                    Every project is a chance to learn something new and push boundaries! 🚀
-                  </motion.p>
-                </div>
-              </div>
+          {/* Bio + Quick Facts */}
+          <div className="grid lg:grid-cols-5 gap-10 mb-14">
+            <motion.div variants={fadeUp} className="lg:col-span-3 space-y-5 text-text-secondary text-lg leading-relaxed">
+              <p>
+                I'm <span className="text-text-primary font-semibold">Waqas Munir</span>, an Associate Software
+                Engineer with <span className="text-text-primary font-semibold">2+ years</span> of experience
+                building full-stack products with React, Next.js, NestJS, TypeScript and PostgreSQL.
+              </p>
+              <p>
+                Lately my work centers on <span className="text-primary-400 font-semibold">AI-powered systems</span>,
+                including LLM integrations, RAG and AI automation. I also handle the{' '}
+                <span className="text-primary-400 font-semibold">DevOps</span> side: building{' '}
+                <span className="text-primary-400 font-semibold">CI/CD pipelines</span>, administering{' '}
+                <span className="text-primary-400 font-semibold">Linux servers</span> and deploying with{' '}
+                <span className="text-primary-400 font-semibold">Nginx</span>.
+              </p>
+              <p>
+                What keeps me going is a genuine <span className="text-primary-400 font-semibold">love for learning</span>.
+                I enjoy exploring new technologies and ideas in software engineering, and these days that
+                includes building alongside AI coding tools.
+              </p>
             </motion.div>
-          </motion.div>
 
-          {/* Stats - 4 Column Grid (Smaller Cards) */}
-          <motion.div variants={itemVariants} className="mb-12">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-              {stats.map((stat, index) => (
-                <motion.div
-                  key={stat.label}
-                  variants={itemVariants}
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  onHoverStart={() => setHoveredStat(index)}
-                  onHoverEnd={() => setHoveredStat(null)}
-                  className="relative group cursor-pointer"
-                >
-                  <motion.div
-                    className={`absolute inset-0 bg-gradient-to-br ${stat.color} rounded-lg blur-lg opacity-30 group-hover:opacity-60 transition-all duration-300`}
-                    animate={{
-                      scale: hoveredStat === index ? [1, 1.2, 1] : 1,
-                    }}
-                    transition={{
-                      duration: 1,
-                      repeat: hoveredStat === index ? Infinity : 0,
-                    }}
-                  />
-                  <div className="relative bg-bg-secondary/80 backdrop-blur-sm border border-border-primary rounded-lg p-4 text-center hover:border-primary-500/70 transition-all duration-300 overflow-hidden">
-                    {/* Icon */}
-                    <motion.div
-                      initial={{ scale: 0, rotate: -180 }}
-                      animate={isInView ? { scale: 1, rotate: 0 } : { scale: 0, rotate: -180 }}
-                      transition={{ delay: 0.4 + index * 0.1, type: 'spring', stiffness: 200 }}
-                      className="flex justify-center mb-2"
-                    >
-                      <motion.div
-                        animate={{
-                          rotate: hoveredStat === index ? [0, 360] : 0,
-                        }}
-                        transition={{
-                          duration: 0.5,
-                        }}
-                      >
-                        <stat.icon className={`text-2xl bg-gradient-to-br ${stat.color} bg-clip-text text-transparent`} />
-                      </motion.div>
-                    </motion.div>
-
-                    {/* Value */}
-                    <motion.div
-                      initial={{ scale: 0 }}
-                      animate={isInView ? { scale: 1 } : { scale: 0 }}
-                      transition={{ delay: 0.5 + index * 0.1, type: 'spring' }}
-                      className="text-3xl md:text-4xl font-bold text-gradient mb-1"
-                      style={{ fontFamily: "'Sora', sans-serif" }}
-                    >
-                      {stat.value}
-                    </motion.div>
-
-                    {/* Label */}
-                    <div className="text-text-secondary text-xs md:text-sm font-medium">
-                      {stat.label}
-                    </div>
-
-                    {/* Animated border on hover */}
-                    <motion.div
-                      className="absolute inset-0 rounded-lg"
-                      initial={{ opacity: 0 }}
-                      animate={{
-                        opacity: hoveredStat === index ? [0, 1, 0] : 0,
-                      }}
-                      transition={{
-                        duration: 1.5,
-                        repeat: hoveredStat === index ? Infinity : 0,
-                      }}
-                      style={{
-                        background: `linear-gradient(90deg, transparent, rgb(var(--color-primary-500)), transparent)`,
-                        backgroundSize: '200% 2px',
-                        backgroundPosition: 'top',
-                        backgroundRepeat: 'no-repeat',
-                      }}
-                    />
-                  </div>
-                </motion.div>
+            <motion.dl
+              variants={fadeUp}
+              className="lg:col-span-2 bg-bg-secondary/60 border border-border-primary rounded-xl p-6 divide-y divide-border-primary self-start"
+            >
+              {quickFacts.map((fact) => (
+                <div key={fact.label} className="py-3 first:pt-0 last:pb-0">
+                  <dt className="text-xs uppercase tracking-wider text-text-tertiary/70 mb-1">{fact.label}</dt>
+                  <dd className="text-text-primary font-medium">{fact.value}</dd>
+                </div>
               ))}
-            </div>
-          </motion.div>
+            </motion.dl>
+          </div>
 
-          {/* What I'm Working With - Full Width */}
-          <motion.div
-            variants={itemVariants}
-            className="relative group"
-            whileHover={{ scale: 1.01 }}
-          >
-            <motion.div
-              className="absolute -inset-4 bg-gradient-to-r from-primary-500/20 to-accent-500/20 rounded-lg blur-xl"
-              animate={{
-                opacity: [0.3, 0.6, 0.3],
-              }}
-              transition={{
-                duration: 2.5,
-                repeat: Infinity,
-                ease: 'easeInOut',
-              }}
-            />
-            <div className="relative bg-bg-secondary/80 backdrop-blur-sm border border-border-primary rounded-lg p-6 hover:border-primary-500/50 transition-all duration-300">
-              <motion.h4
-                className="text-xl font-bold mb-4 text-center"
-                style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+          {/* Focus Areas */}
+          <motion.h3 variants={fadeUp} className="text-xl font-semibold mb-6 text-text-primary">
+            What I work on
+          </motion.h3>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {focusAreas.map((area) => (
+              <motion.div
+                key={area.title}
+                variants={fadeUp}
+                className="flex flex-col bg-bg-secondary/60 border border-border-primary rounded-xl p-5 hover:border-primary-500/50 transition-colors duration-300"
               >
-                <span className="text-gradient">Currently Building</span>
-              </motion.h4>
-              <ul className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 text-text-secondary">
-                {[
-                  'Full-stack web apps with MERN',
-                  'Server-side rendered apps with Next.js',
-                  'Scalable APIs with Nest.js',
-                  'TypeScript-first architectures',
-                ].map((item, i) => (
-                  <motion.li
-                    key={i}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ delay: 0.9 + i * 0.1 }}
-                    className="flex items-start group/item"
-                    whileHover={{ x: 5 }}
-                  >
-                    <motion.span
-                      className="text-primary-400 mr-3 mt-1"
-                      animate={{
-                        rotate: [0, 90, 0],
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        repeatDelay: 3,
-                      }}
+                <area.icon className="text-primary-400 mb-3" size={24} />
+                <h4 className="font-semibold text-text-primary mb-2">{area.title}</h4>
+                <p className="text-sm text-text-secondary leading-relaxed mb-4">{area.text}</p>
+                <div className="flex flex-wrap gap-2 mt-auto">
+                  {area.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-xs px-2 py-1 rounded-md bg-bg-tertiary text-primary-300 border border-border-secondary"
                     >
-                      ▹
-                    </motion.span>
-                    <span className="group-hover/item:text-primary-400 transition-colors duration-200 text-sm">
-                      {item}
+                      {tag}
                     </span>
-                  </motion.li>
-                ))}
-              </ul>
-            </div>
-          </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
       </div>
-
-      {/* Floating particles for extra flair */}
-      <motion.div
-        className="absolute top-1/4 left-10 w-2 h-2 bg-primary-500/30 rounded-full blur-sm"
-        animate={{
-          y: [0, -30, 0],
-          opacity: [0.3, 0.8, 0.3],
-        }}
-        transition={{
-          duration: 3,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
-      />
-      <motion.div
-        className="absolute bottom-1/3 right-20 w-3 h-3 bg-accent-500/30 rounded-full blur-sm"
-        animate={{
-          y: [0, 40, 0],
-          opacity: [0.3, 0.7, 0.3],
-        }}
-        transition={{
-          duration: 4,
-          repeat: Infinity,
-          ease: 'easeInOut',
-          delay: 1,
-        }}
-      />
     </section>
   );
 };
 
 export default About;
-
-
-
-

@@ -1,34 +1,159 @@
-import { Project } from '../types';
+import { CaseStudy } from '../types';
 
 /**
- * Projects Data
- *
- * Add your projects here by creating new objects following the Project interface.
- * Each project should have:
- * - id: unique identifier
- * - title: project name
- * - description: short description (1-2 lines)
- * - longDescription: detailed description (optional)
- * - technologies: array of tech stack used
- * - imageUrl: project screenshot/image URL (optional)
- * - demoUrl: live demo link (optional)
- * - githubUrl: GitHub repository link (optional)
- * - featured: set to true to highlight the project (optional)
+ * Case studies, in display order (strongest first).
+ * Keep metrics factual. Only use numbers you can defend in an interview.
  */
-
-export const projects: Project[] = [
+export const projects: CaseStudy[] = [
   {
-    id: '1',
-    title: 'CodeBin',
-    description: 'A modern platform to save, store, and share code snippets with semantic highlighting and instant shareable links.',
-    longDescription: 'CodeBin is a full-stack code sharing platform developed as my Final Year Project (FYP). Users can save their code snippets with proper syntax highlighting based on programming language, generate instant shareable links, and collaborate with a creative coding community. Built with Next.js 13 App Router, featuring a sleek UI with Tailwind CSS and TypeScript for type-safe, scalable code.',
-    technologies: ['TypeScript', 'Next.js', 'Tailwind CSS'],
-    githubUrl: 'https://github.com/Dev-Waqas232/Codebin-NextJS',
-    demoUrl: 'https://codebin-next-js.vercel.app/',
-    featured: true,
+    id: 'time-keeper',
+    title: 'Time-Keeper',
+    category: 'Multi-tenant SaaS · Workforce management',
+    company: 'OptimaGeeks',
+    role: 'Solo, end to end',
+    status: 'Mobile app in progress',
+    url: 'https://time-keeper.net/',
+    summary:
+      'Rebuilt a legacy PHP workforce management system for security companies as a modern multi-tenant SaaS.',
+    metrics: ['~2M records migrated', 'Per-tenant custom domains', 'Web + mobile'],
+    built: [
+      'Designed the PostgreSQL schema and NestJS backend from scratch, covering shifts, clock in/out, working hours, time off, incidents, pay rates, payroll and invoicing.',
+      'Multi-tenant architecture with per-tenant custom domains, plus a provisioning script that sets up each tenant’s subdomain, app and database.',
+      'ETL pipeline that migrated ~2M legacy records from MySQL into the new PostgreSQL schema, reconciling legacy data quirks along the way.',
+      'Role- and permission-based access, background jobs with BullMQ and Redis, PDF and Excel exports, and email notifications.',
+      'React and Zustand web app. The React Native (Expo) app for officers is in progress.',
+      'Configured and manage the production Linux VPS (CyberPanel, LiteSpeed), with CI/CD for automated deployments.',
+    ],
+    tech: ['NestJS', 'TypeORM', 'PostgreSQL', 'MySQL', 'BullMQ', 'Redis', 'React', 'Zustand', 'Tailwind CSS', 'React Native', 'Expo', 'Linux VPS', 'CI/CD'],
+  },
+  {
+    id: 'support-platform',
+    title: 'AI Customer Support Platform',
+    category: 'AI · RAG · Helpdesk',
+    company: 'OptimaGeeks',
+    client: 'My Pretty Strap',
+    role: 'Solo, end to end',
+    status: 'Private',
+    summary:
+      'An AI-powered helpdesk for a Shopify fashion brand that drafts replies from its own knowledge base and past conversations.',
+    metrics: ['Self-learning RAG pipeline', 'Gmail + Zendesk ingestion', 'Rule-based auto-assignment'],
+    built: [
+      'Core RAG pipeline that retrieves knowledge-base chunks plus Shopify order and product context to draft context-aware replies.',
+      'Learning loop that records how customers and agents respond and favours the patterns that worked when drafting replies to new queries.',
+      'Ingestion pipeline that pulls emails from Gmail and Zendesk into one inbox and auto-assigns tickets to agents based on configured rules.',
+      'Returns and order-tracking flows, so agents can resolve common requests without leaving the platform.',
+    ],
+    tech: ['React', 'TypeScript', 'tRPC', 'React Query', 'Drizzle ORM', 'MySQL', 'RAG', 'Gmail API', 'Zendesk API', 'Shopify API'],
+  },
+  {
+    id: 'tyre-depot',
+    title: 'Tyre Depot',
+    category: 'B2B eCommerce · ERP integration',
+    company: 'OptimaGeeks',
+    role: 'Solo, end to end',
+    url: 'https://shop.tyredepot.com.au/',
+    summary:
+      'A B2B Shopify store for an Australian tyre wholesaler, kept in sync with its Marlin ERP.',
+    metrics: ['Shopify ↔ Marlin ERP sync', 'Automated order submission', 'Algolia search'],
+    built: [
+      'Product pipeline that syncs catalog, pricing and tyre attributes from Marlin into Shopify, with deduplication, brand normalisation and image matching.',
+      'Automated order submission from Shopify to Marlin, including PO numbers and delivery notes, with Slack alerts so a failed order is never silent.',
+      'Algolia-powered tyre search, a custom Shopify theme and a checkout extension.',
+      'Scheduled syncs and background jobs on BullMQ and Redis.',
+      'Deployed the integration server on a Linux VPS with Nginx, which I configured and manage.',
+    ],
+    tech: ['Shopify', 'Liquid', 'Node.js', 'Express', 'PostgreSQL', 'Drizzle ORM', 'BullMQ', 'Redis', 'Algolia', 'Slack API', 'Linux VPS'],
+  },
+  {
+    id: 'haloinbox',
+    title: 'HaloInbox',
+    category: 'SaaS · Email marketing & CRM',
+    company: 'Inspire Uplift',
+    role: 'Frontend lead, team of 3',
+    url: 'https://www.haloinbox.com/',
+    summary: 'The frontend of an email marketing and CRM SaaS for eCommerce brands.',
+    metrics: ['4–5s → ~300ms initial load', 'Led 2 interns', 'Custom design system'],
+    built: [
+      'Cut initial load time from 4–5s to ~300ms (measured with Lighthouse and network profiling) using lazy loading, dynamic imports and code splitting.',
+      'Owned the type-safe API integration layer, built on typed Axios wrappers and custom data-fetching hooks.',
+      'Built a custom design system and reusable component library from Figma, replacing shadcn/ui for finer control over UX.',
+      'Developed automated email flows and customer segmentation with conditional logic.',
+      'Led 2 interns, reviewing their pull requests.',
+    ],
+    tech: ['React', 'TypeScript', 'Tailwind CSS', 'React Router', 'Axios', 'Figma'],
+  },
+  {
+    id: 'derma-direct',
+    title: 'Derma Direct Price Comparison',
+    category: 'Price intelligence · Web scraping',
+    company: 'OptimaGeeks',
+    client: 'Derma Direct',
+    role: 'Solo, end to end',
+    url: 'https://compare.dermadirect.co.uk/',
+    summary: 'A competitor price-comparison dashboard for a UK aesthetics supplier.',
+    metrics: ['10+ competitor sites', 'Daily automated scraping', 'LLM data extraction'],
+    built: [
+      'Puppeteer scrapers that run daily across 10+ live competitor sites, with retries and error logging.',
+      'LLM-based extraction that turns messy product pages into structured prices, variants and stock status.',
+      'Dashboard showing the price difference for each product, highlighting where Derma Direct is cheapest, with price history.',
+      'A daily Excel report emailed automatically.',
+    ],
+    tech: ['Node.js', 'Express', 'Puppeteer', 'OpenAI', 'PostgreSQL', 'Drizzle ORM', 'node-cron', 'React', 'MUI'],
+  },
+  {
+    id: 'medicspot',
+    title: 'Medicspot',
+    category: 'Healthcare · Patient flows',
+    company: 'Verdant Soft',
+    role: 'Full-stack developer',
+    url: 'https://www.medicspot.co.uk/',
+    summary: 'Core patient-facing modules for a UK online healthcare provider.',
+    metrics: ['Veriff ID verification', 'Postmark CI/CD sync', 'End-to-end modules'],
+    built: [
+      'BMI calculator with live conversion between metric and imperial units (kg, lbs, stones).',
+      'UK address finder powered by Ideal Postcodes.',
+      'Veriff identity verification flow, built end to end.',
+      'CI/CD pipeline that pushes email template changes to Postmark automatically, making the codebase the single source of truth.',
+    ],
+    tech: ['Next.js', 'React', 'TypeScript', 'Veriff', 'Ideal Postcodes', 'Postmark', 'CI/CD'],
+  },
+  {
+    id: 'landsharks',
+    title: 'Landsharks Running Club',
+    category: 'Club management · Web + mobile',
+    company: 'OptimaGeeks',
+    role: 'Solo, end to end',
+    url: 'https://landsharksrunningclub.net/',
+    summary: 'A race management platform and mobile app for a running club.',
+    metrics: ['QR race check-ins', 'Public race results', 'Flutter app'],
+    built: [
+      'NestJS and Prisma backend with a React web app for managing runners, coaches, locations and races.',
+      'Full race lifecycle: scheduling, live in-progress races with QR check-ins, and results.',
+      'Public pages for upcoming races and results by race and location.',
+      'Bulk CSV/Excel imports and PDF exports.',
+      'Maintained the Flutter mobile app, fixing bugs and updating its API layer.',
+      'Deployed on a Linux VPS with CyberPanel and OpenLiteSpeed, which I configured and manage.',
+    ],
+    tech: ['NestJS', 'Prisma', 'PostgreSQL', 'React', 'React Query', 'TypeScript', 'Flutter', 'Linux VPS'],
+  },
+  {
+    id: 'reno-lift',
+    title: 'Reno Lift',
+    category: 'Marketing site · SEO',
+    company: 'OptimaGeeks',
+    role: 'Design and development',
+    url: 'https://renolift.com.au',
+    summary:
+      'Designed and built the marketing site for a Brisbane and Gold Coast property renovation company.',
+    metrics: ['Designed from scratch', 'Technical SEO', 'Top of Google search'],
+    built: [
+      'Designed the site from the client brief, with a premium, architectural look.',
+      'Built it in Next.js with per-page metadata and dedicated landing pages for each service.',
+      'Before/after comparison sliders to showcase projects.',
+      'Contact and lead forms that deliver to email via Resend.',
+      'Owned the technical SEO, helping the site rank at the top of Google search.',
+      'Deployed on a Linux VPS with Nginx, which I configured and manage.',
+    ],
+    tech: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Resend', 'Linux VPS'],
   },
 ];
-
-
-
-
