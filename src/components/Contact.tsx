@@ -337,10 +337,6 @@ const Contact = () => {
                   }}
                 />
                 <div className="relative bg-bg-secondary/90 backdrop-blur-sm border border-border-primary rounded-xl p-6 space-y-4">
-                  <h4 className="text-lg font-bold text-text-primary mb-4">
-                    Or reach me via:
-                  </h4>
-
                   {/* Email */}
                   <motion.a
                     href={`mailto:${contactInfo.email}`}
@@ -404,17 +400,6 @@ const Contact = () => {
                 </div>
               </div>
 
-              {/* Response Time Info */}
-              <motion.div
-                variants={itemVariants}
-                className="bg-primary-500/10 border border-primary-500/30 rounded-lg p-4 text-center"
-              >
-                <p className="text-text-secondary text-sm">
-                  <span className="text-primary-400 font-semibold">
-                    Usually reply within 24 hours
-                  </span>
-                </p>
-              </motion.div>
             </motion.div>
           </div>
         </motion.div>
